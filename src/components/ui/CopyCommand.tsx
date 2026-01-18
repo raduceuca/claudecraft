@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Check, Copy } from 'lucide-react'
+import { trackEvent } from '@/lib/clarity'
 
 interface CopyCommandProps {
   children: string
@@ -11,6 +12,9 @@ export function CopyCommand({ children }: CopyCommandProps) {
   const handleCopy = async () => {
     await navigator.clipboard.writeText(children)
     setCopied(true)
+    // Track the copy event with a sanitized command name
+    const commandName = children.split(' ')[0].replace(/[^a-zA-Z0-9]/g, '')
+    trackEvent(`copy_${commandName}`)
     setTimeout(() => setCopied(false), 2000)
   }
 

@@ -1,4 +1,5 @@
 import { useState, useId } from 'react'
+import { trackEvent } from '@/lib/clarity'
 
 interface FilePreviewProps {
   filename: string
@@ -11,10 +12,19 @@ export function FilePreview({ filename, description, content, language = 'markdo
   const [isOpen, setIsOpen] = useState(false)
   const panelId = useId()
 
+  const handleToggle = () => {
+    if (!isOpen) {
+      // Track file preview open
+      const safeName = filename.replace(/[^a-zA-Z0-9]/g, '_')
+      trackEvent(`preview_${safeName}`)
+    }
+    setIsOpen(!isOpen)
+  }
+
   return (
     <div className="border border-base-300 rounded-lg overflow-hidden">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle}
         className="w-full flex items-center justify-between p-4 hover:bg-base-200 transition-colors text-left"
         aria-expanded={isOpen}
         aria-controls={panelId}

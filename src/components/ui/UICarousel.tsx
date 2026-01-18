@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useTheme, type Theme } from '@/context/ThemeContext'
+import { trackEvent } from '@/lib/clarity'
 
 const slides = [
   {
@@ -222,7 +223,11 @@ export function UICarousel() {
         <span className="text-sm text-base-content/50">Try a theme:</span>
         <select
           value={theme}
-          onChange={(e) => setTheme(e.target.value as Theme)}
+          onChange={(e) => {
+            const newTheme = e.target.value as Theme
+            setTheme(newTheme)
+            trackEvent(`theme_${newTheme}`)
+          }}
           className="select select-bordered select-sm w-40"
           aria-label="Select theme"
         >
@@ -238,7 +243,10 @@ export function UICarousel() {
       <div className="bg-base-200 rounded-lg p-6 min-h-[220px] flex items-center justify-center overflow-hidden relative">
         {/* Prev button */}
         <button
-          onClick={() => setCurrent((prev) => (prev - 1 + slides.length) % slides.length)}
+          onClick={() => {
+            setCurrent((prev) => (prev - 1 + slides.length) % slides.length)
+            trackEvent('carousel_prev')
+          }}
           className="absolute left-2 top-1/2 -translate-y-1/2 btn btn-circle btn-sm btn-ghost"
           aria-label="Previous slide"
         >
@@ -257,7 +265,10 @@ export function UICarousel() {
 
         {/* Next button */}
         <button
-          onClick={() => setCurrent((prev) => (prev + 1) % slides.length)}
+          onClick={() => {
+            setCurrent((prev) => (prev + 1) % slides.length)
+            trackEvent('carousel_next')
+          }}
           className="absolute right-2 top-1/2 -translate-y-1/2 btn btn-circle btn-sm btn-ghost"
           aria-label="Next slide"
         >
@@ -279,7 +290,10 @@ export function UICarousel() {
           {slides.map((slide, index) => (
             <button
               key={slide.id}
-              onClick={() => setCurrent(index)}
+              onClick={() => {
+                setCurrent(index)
+                trackEvent(`carousel_dot_${slide.id}`)
+              }}
               role="tab"
               aria-selected={index === current}
               className={`p-2 -m-1.5 transition-all ${

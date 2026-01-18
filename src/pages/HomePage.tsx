@@ -3,8 +3,10 @@ import { CopyCommand } from '@/components/ui/CopyCommand'
 import { UICarousel } from '@/components/ui/UICarousel'
 import { FilePreview } from '@/components/ui/FilePreview'
 import { TerminalHeader } from '@/components/ui/TerminalHeader'
+import { trackEvent } from '@/lib/clarity'
 
 export function HomePage() {
+  const trackLink = (name: string) => () => trackEvent(`click_${name}`)
   return (
     <div className="min-h-dvh bg-base-100 text-base-content">
       <article className="max-w-3xl mx-auto px-6 py-20">
@@ -90,6 +92,7 @@ export function HomePage() {
             <a
               href="https://github.com/raduceuca/claudecraft/archive/refs/heads/main.zip"
               className="underline underline-offset-4 hover:text-primary transition-colors"
+              onClick={trackLink('download_zip')}
             >
               Grab the ZIP
             </a>
@@ -328,7 +331,7 @@ List each error with:
           <h3 className="text-sm font-medium text-base-content/50 mb-3 mt-6">Development Workflow</h3>
           <p className="text-xs text-base-content/40 mb-4">
             From{' '}
-            <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+            <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary" onClick={trackLink('link_superpowers')}>
               obra/superpowers
             </a>
             {' '}— the "think before you code" collection.
@@ -410,7 +413,7 @@ List each error with:
             <div className="flex items-baseline gap-2">
               <span className="text-base-content/80">
                 react-best-practices
-                <a href="https://vercel.com/design/guidelines" target="_blank" rel="noopener noreferrer" className="text-base-content/40 hover:text-primary ml-2 text-xs">
+                <a href="https://vercel.com/design/guidelines" target="_blank" rel="noopener noreferrer" className="text-base-content/40 hover:text-primary ml-2 text-xs" onClick={trackLink('link_vercel')}>
                   via Vercel
                 </a>
               </span>
@@ -420,7 +423,7 @@ List each error with:
             <div className="flex items-baseline gap-2">
               <span className="text-base-content/80">
                 testing-patterns
-                <a href="https://github.com/ChrisWiles/claude-code-showcase" target="_blank" rel="noopener noreferrer" className="text-base-content/40 hover:text-primary ml-2 text-xs">
+                <a href="https://github.com/ChrisWiles/claude-code-showcase" target="_blank" rel="noopener noreferrer" className="text-base-content/40 hover:text-primary ml-2 text-xs" onClick={trackLink('link_chriswiles')}>
                   via ChrisWiles
                 </a>
               </span>
@@ -430,7 +433,7 @@ List each error with:
             <div className="flex items-baseline gap-2">
               <span className="text-base-content/80">
                 ui-skills
-                <a href="https://www.ui-skills.com/" target="_blank" rel="noopener noreferrer" className="text-base-content/40 hover:text-primary ml-2 text-xs">
+                <a href="https://www.ui-skills.com/" target="_blank" rel="noopener noreferrer" className="text-base-content/40 hover:text-primary ml-2 text-xs" onClick={trackLink('link_uiskills')}>
                   via ui-skills.com
                 </a>
               </span>
@@ -440,7 +443,7 @@ List each error with:
             <div className="flex items-baseline gap-2">
               <span className="text-base-content/80">
                 a11y-audit
-                <a href="https://claude-plugins.dev/skills/@daffy0208/ai-dev-standards/accessibility-engineer" target="_blank" rel="noopener noreferrer" className="text-base-content/40 hover:text-primary ml-2 text-xs">
+                <a href="https://claude-plugins.dev/skills/@daffy0208/ai-dev-standards/accessibility-engineer" target="_blank" rel="noopener noreferrer" className="text-base-content/40 hover:text-primary ml-2 text-xs" onClick={trackLink('link_daffy0208')}>
                   via daffy0208
                 </a>
               </span>
@@ -573,30 +576,30 @@ CLAUDE.md               # project context`}</CodeBlock>
             <div>
               <h3 className="text-base-content/60 font-medium mb-2">Core Stack</h3>
               <div className="flex flex-wrap gap-x-4 gap-y-1 text-base-content/50">
-                <a href="https://react.dev" target="_blank" rel="noopener noreferrer" className="hover:text-primary">React (Meta)</a>
+                <a href="https://react.dev" target="_blank" rel="noopener noreferrer" className="hover:text-primary" onClick={trackLink('credit_react')}>React (Meta)</a>
                 <span aria-hidden="true">·</span>
-                <a href="https://typescriptlang.org" target="_blank" rel="noopener noreferrer" className="hover:text-primary">TypeScript (Microsoft)</a>
+                <a href="https://typescriptlang.org" target="_blank" rel="noopener noreferrer" className="hover:text-primary" onClick={trackLink('credit_typescript')}>TypeScript (Microsoft)</a>
                 <span aria-hidden="true">·</span>
-                <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Vite (Evan You)</a>
+                <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer" className="hover:text-primary" onClick={trackLink('credit_vite')}>Vite (Evan You)</a>
                 <span aria-hidden="true">·</span>
-                <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Tailwind (Adam Wathan)</a>
+                <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary" onClick={trackLink('credit_tailwind')}>Tailwind (Adam Wathan)</a>
                 <span aria-hidden="true">·</span>
-                <a href="https://daisyui.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary">DaisyUI (Pouya Saadeghi)</a>
+                <a href="https://daisyui.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary" onClick={trackLink('credit_daisyui')}>DaisyUI (Pouya Saadeghi)</a>
                 <span aria-hidden="true">·</span>
-                <a href="https://bun.sh" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Bun (Jarred Sumner)</a>
+                <a href="https://bun.sh" target="_blank" rel="noopener noreferrer" className="hover:text-primary" onClick={trackLink('credit_bun')}>Bun (Jarred Sumner)</a>
               </div>
             </div>
 
             <div>
               <h3 className="text-base-content/60 font-medium mb-2">Skills & Workflows</h3>
               <div className="flex flex-wrap gap-x-4 gap-y-1 text-base-content/50">
-                <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Superpowers (Jesse Vincent)</a>
+                <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener noreferrer" className="hover:text-primary" onClick={trackLink('credit_superpowers')}>Superpowers (Jesse Vincent)</a>
                 <span aria-hidden="true">·</span>
-                <a href="https://vercel.com/design" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Vercel Design</a>
+                <a href="https://vercel.com/design" target="_blank" rel="noopener noreferrer" className="hover:text-primary" onClick={trackLink('credit_vercel')}>Vercel Design</a>
                 <span aria-hidden="true">·</span>
-                <a href="https://github.com/ChrisWiles" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Chris Wiles</a>
+                <a href="https://github.com/ChrisWiles" target="_blank" rel="noopener noreferrer" className="hover:text-primary" onClick={trackLink('credit_chriswiles')}>Chris Wiles</a>
                 <span aria-hidden="true">·</span>
-                <a href="https://www.ui-skills.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary">UI Skills</a>
+                <a href="https://www.ui-skills.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary" onClick={trackLink('credit_uiskills')}>UI Skills</a>
               </div>
             </div>
           </div>
@@ -613,6 +616,7 @@ CLAUDE.md               # project context`}</CodeBlock>
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-base-content/60"
+                onClick={trackLink('footer_github')}
               >
                 GitHub
               </a>
@@ -621,6 +625,7 @@ CLAUDE.md               # project context`}</CodeBlock>
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-base-content/60"
+                onClick={trackLink('footer_twitter')}
               >
                 @raduceuca
               </a>
