@@ -31,7 +31,7 @@ const slides = [
               <p className="text-xs text-base-content/50">Probably typing...</p>
             </div>
             <span className="badge badge-success badge-sm gap-1">
-              <span className="w-1.5 h-1.5 bg-current rounded-full animate-pulse"></span>
+              <span className="w-1.5 h-1.5 bg-current rounded-full animate-pulse" aria-hidden="true"></span>
               Online
             </span>
           </div>
@@ -114,12 +114,12 @@ const slides = [
     id: 'tabs',
     content: (
       <div>
-        <div role="tablist" className="tabs tabs-boxed bg-base-200 mb-3">
-          <button role="tab" className="tab tab-active text-xs">Design</button>
-          <button role="tab" className="tab text-xs">Code</button>
-          <button role="tab" className="tab text-xs">Regret</button>
+        <div role="tablist" className="tabs tabs-boxed bg-base-200 mb-3" aria-label="Project phases">
+          <button role="tab" className="tab tab-active text-xs" aria-selected="true" id="tab-design" aria-controls="tabpanel-design">Design</button>
+          <button role="tab" className="tab text-xs" aria-selected="false" id="tab-code" aria-controls="tabpanel-code">Code</button>
+          <button role="tab" className="tab text-xs" aria-selected="false" id="tab-regret" aria-controls="tabpanel-regret">Regret</button>
         </div>
-        <div className="bg-base-200 rounded-lg p-3">
+        <div role="tabpanel" id="tabpanel-design" aria-labelledby="tab-design" className="bg-base-200 rounded-lg p-3">
           <p className="text-sm text-base-content/70">Current tab: Design</p>
           <p className="text-xs text-base-content/50 mt-1">Where ideas go to become tickets.</p>
         </div>
@@ -274,19 +274,28 @@ export function UICarousel() {
           {current + 1} / {slides.length}
         </span>
 
-        {/* Dots - bigger, easier to tap */}
-        <div className="flex gap-1.5">
+        {/* Dots - with adequate touch targets */}
+        <div className="flex gap-1" role="tablist" aria-label="Carousel slides">
           {slides.map((slide, index) => (
             <button
               key={slide.id}
               onClick={() => setCurrent(index)}
-              className={`h-2 rounded-full transition-all ${
-                index === current
-                  ? 'bg-primary w-6'
-                  : 'bg-base-300 hover:bg-base-content/30 w-2'
+              role="tab"
+              aria-selected={index === current}
+              className={`p-2 -m-1.5 transition-all ${
+                index === current ? '' : ''
               }`}
               aria-label={`Go to slide ${index + 1}`}
-            />
+            >
+              <span
+                className={`block h-2 rounded-full transition-all ${
+                  index === current
+                    ? 'bg-primary w-6'
+                    : 'bg-base-300 hover:bg-base-content/30 w-2'
+                }`}
+                aria-hidden="true"
+              />
+            </button>
           ))}
         </div>
 

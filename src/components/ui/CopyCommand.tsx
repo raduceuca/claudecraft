@@ -20,15 +20,27 @@ export function CopyCommand({ children }: CopyCommandProps) {
       className="group inline-flex items-center gap-2 text-left"
       aria-label={`Copy command: ${children}`}
     >
-      <code className="font-mono text-sm bg-base-200/60 px-2 py-1 rounded border border-base-300/50 group-hover:border-base-300">
+      <code
+        className="font-mono text-sm px-2.5 py-1.5 rounded-r border-l-2 border-l-primary/50 border-y border-r border-base-content/10 group-hover:border-base-content/15 transition-colors text-base-content"
+        style={{
+          background: `
+            radial-gradient(circle, oklch(var(--bc) / 0.03) 0.5px, transparent 0.5px),
+            oklch(var(--b2) / 0.7)
+          `,
+          backgroundSize: '8px 8px, 100% 100%',
+        }}
+      >
         {children}
       </code>
-      <span className="opacity-0 group-hover:opacity-100">
+      <span className="opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100" aria-hidden="true">
         {copied ? (
           <Check className="size-3.5 text-success" />
         ) : (
           <Copy className="size-3.5 text-base-content/40" />
         )}
+      </span>
+      <span className="sr-only" aria-live="polite">
+        {copied ? 'Copied to clipboard' : ''}
       </span>
     </button>
   )

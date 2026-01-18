@@ -33,7 +33,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         return stored
       }
     }
-    return 'light'
+    return 'halloween'
   })
 
   useEffect(() => {

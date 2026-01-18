@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useId } from 'react'
 
 interface FilePreviewProps {
   filename: string
@@ -9,6 +9,7 @@ interface FilePreviewProps {
 
 export function FilePreview({ filename, description, content, language = 'markdown' }: FilePreviewProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const panelId = useId()
 
   return (
     <div className="border border-base-300 rounded-lg overflow-hidden">
@@ -16,6 +17,7 @@ export function FilePreview({ filename, description, content, language = 'markdo
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-4 hover:bg-base-200 transition-colors text-left"
         aria-expanded={isOpen}
+        aria-controls={panelId}
       >
         <div>
           <div className="font-mono text-sm font-medium">{filename}</div>
@@ -33,7 +35,7 @@ export function FilePreview({ filename, description, content, language = 'markdo
       </button>
 
       {isOpen && (
-        <div className="border-t border-base-300 bg-base-200 p-4 overflow-x-auto">
+        <div id={panelId} className="border-t border-base-300 bg-base-200 p-4 overflow-x-auto">
           <pre className="text-xs font-mono text-base-content/80 whitespace-pre-wrap">
             <code className={`language-${language}`}>{content}</code>
           </pre>

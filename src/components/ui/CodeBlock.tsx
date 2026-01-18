@@ -27,14 +27,19 @@ export function CodeBlock({ children, language }: CodeBlockProps) {
       </pre>
       <button
         onClick={handleCopy}
-        className="absolute top-2 right-2 p-1.5 rounded-md bg-base-100/90 border border-base-300 opacity-0 group-hover:opacity-100 hover:bg-base-100"
+        className="absolute top-2 right-2 p-1.5 rounded-md bg-base-100/90 border border-base-300 opacity-0 group-hover:opacity-100 focus:opacity-100 hover:bg-base-100"
         aria-label="Copy code"
       >
-        {copied ? (
-          <Check className="size-3 text-success" />
-        ) : (
-          <Copy className="size-3 text-base-content/50" />
-        )}
+        <span aria-hidden="true">
+          {copied ? (
+            <Check className="size-3 text-success" />
+          ) : (
+            <Copy className="size-3 text-base-content/50" />
+          )}
+        </span>
+        <span className="sr-only" aria-live="polite">
+          {copied ? 'Copied to clipboard' : ''}
+        </span>
       </button>
     </div>
   )
