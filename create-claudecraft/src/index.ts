@@ -3,7 +3,6 @@ import fs from 'fs';
 import path from 'path';
 import {
   renderHeader,
-  renderManifest,
   renderMiniHeader,
   renderProgress,
   renderProgressFooter,
@@ -22,7 +21,8 @@ async function main() {
   const projectName = args.find((a) => !a.startsWith('-'));
   const skipPrompts = args.includes('--yes') || args.includes('-y');
   const noGit = args.includes('--no-git');
-  const noInstall = args.includes('--no-install');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _noInstall = args.includes('--no-install');
   const showHelp = args.includes('--help') || args.includes('-h') || args.includes('/help');
   const showVersion = args.includes('--version') || args.includes('-v') || args.includes('/version');
   const initMode = args.includes('--init') || args.includes('-i') || args.includes('/init');
@@ -78,10 +78,8 @@ ${pc.bold('Figma Integration:')}
   let choices: UserChoices;
 
   if (skipPrompts) {
-    // Show header only for non-interactive mode
     console.clear();
     console.log(renderHeader());
-    console.log(renderManifest());
     choices = {
       projectName: projectName || 'claudecraft-app',
       bundle: 'everything' as const,

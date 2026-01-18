@@ -6,7 +6,7 @@ import figlet from 'figlet';
 import gradient from 'gradient-string';
 import fs from 'fs';
 import path from 'path';
-import { SKILLS, BUNDLES, VERSION, STACK, ASSETS, DEFAULT_THEME, DEFAULT_PORT, TAGLINE } from './constants.js';
+import { SKILLS, BUNDLES, VERSION } from './constants.js';
 
 // Split gradients for two-line logo
 const claudeGradient = gradient(['#00ff9f', '#00b8ff']); // Green → Cyan (fresh)
@@ -33,16 +33,13 @@ const today = new Date().toISOString().split('T')[0].replace(/-/g, '.');
 // BASELINE row: "  │ │  " (7) + content (56) + "│◀┼─ BASELINE" (13) = 76
 // ASCII: CLAUDE=49 chars, CRAFT=41 chars
 // ═══════════════════════════════════════════════════════════════════════════
-const FRAME = 76;
 const INNER = 66;         // Normal row content width
 const CAP_HT_WIDTH = 58;  // CAP HT row content width (76-7-11)
 const BASELINE_WIDTH = 56; // BASELINE row content width (76-7-13)
 
-// Helper to pad strings
-const pad = (s: string, len: number) => s + ' '.repeat(Math.max(0, len - s.length));
-
 // Pad to exact width (strips ANSI codes for length calc)
 const padTo = (line: string, width: number): string => {
+  // eslint-disable-next-line no-control-regex
   const visible = line.replace(/\x1b\[[0-9;]*m/g, '').length;
   return line + ' '.repeat(Math.max(0, width - visible));
 };
@@ -90,25 +87,6 @@ const COMMANDS = [
   { name: '/quit', hint: 'escape while you can' },
 ];
 
-// Specs/Manifest panel component (76 chars wide to match header)
-function SpecsPanel() {
-  return (
-    <Box flexDirection="column">
-      <Text dimColor>  ╭─── SPECS {'─'.repeat(60)}╮</Text>
-      <Text dimColor>  │ {TAGLINE.padEnd(70)}│</Text>
-      <Text dimColor>  ├─── STACK ───────────────┬─── ASSETS ──────┬─── DEFAULTS ────────┤</Text>
-      <Text dimColor>  │ <Text>react       {pad(STACK.react, 6)}</Text>│ <Text>skills   {pad(String(ASSETS.skills), 4)}</Text>│ <Text>theme     {pad(DEFAULT_THEME, 8)}</Text>│</Text>
-      <Text dimColor>  │ <Text>typescript  {pad(STACK.typescript, 6)}</Text>│ <Text>commands {pad(String(ASSETS.commands), 4)}</Text>│ <Text>port      {pad(String(DEFAULT_PORT), 8)}</Text>│</Text>
-      <Text dimColor>  │ <Text>vite        {pad(STACK.vite, 6)}</Text>│ <Text>themes   {pad(String(ASSETS.themes), 4)}</Text>│ <Text>tests     vitest  </Text>│</Text>
-      <Text dimColor>  │ <Text>tailwind    {pad(STACK.tailwind, 6)}</Text>│ <Text>hooks    {pad(String(ASSETS.hooks), 4)}</Text>│ <Text>pkg       bun     </Text>│</Text>
-      <Text dimColor>  │ <Text>daisyui     {pad(STACK.daisyui, 6)}</Text>│ <Text>comps    {pad(String(ASSETS.components), 4)}</Text>│ <Text>license   MIT     </Text>│</Text>
-      <Text dimColor>  ├─────────────────────────┴─────────────────┴─────────────────────┤</Text>
-      <Text dimColor>  │ ~48 files · 0 deps · type /help for existential guidance        │</Text>
-      <Text dimColor>  ╰{'─'.repeat(72)}╯</Text>
-    </Box>
-  );
-}
-
 // Progress panel - 76 chars wide to match header
 function ProgressPanel({ step, total, labels }: { step: number; total: number; labels: string[] }) {
   const stepWidth = Math.floor(66 / total);
@@ -146,7 +124,7 @@ function ProgressPanel({ step, total, labels }: { step: number; total: number; l
 const STEP_LABELS = ['Name', 'Skills', 'Homepage', 'Git'];
 
 // Technical Drawing Header with prepress marks (76 chars wide, perfectly aligned)
-function Header({ showSpecs = true, step, totalSteps }: { showSpecs?: boolean; step?: number; totalSteps?: number }) {
+function Header({ step, totalSteps }: { step?: number; totalSteps?: number }) {
   // Apply gradients and filter empty lines
   const claudeLines = claudeGradient(asciiClaude).split('\n').filter(l => l.trim());
   const craftLines = craftGradient(asciiCraft).split('\n').filter(l => l.trim());
@@ -223,7 +201,7 @@ function Header({ showSpecs = true, step, totalSteps }: { showSpecs?: boolean; s
         <Text color="white">■</Text><Text dimColor> K     </Text>
         <Text color="green">REV {VERSION}</Text>
         <Text dimColor> │ {today} │ </Text>
-        <Text color="yellow">NOT FOR PROD</Text>
+        <Text color="yellow">WORKS ON MAC</Text>
         <Text dimColor>  │</Text>
       </Text>
 
@@ -234,12 +212,8 @@ function Header({ showSpecs = true, step, totalSteps }: { showSpecs?: boolean; s
         <Text color="cyan">⊕</Text>
       </Text>
 
-      {/* Specs panel OR progress panel */}
-      {showSpecs ? (
-        <Box marginTop={1}>
-          <SpecsPanel />
-        </Box>
-      ) : step && totalSteps ? (
+      {/* Progress panel (specs panel removed) */}
+      {step && totalSteps ? (
         <Box marginTop={1}>
           <ProgressPanel step={step} total={totalSteps} labels={STEP_LABELS} />
         </Box>
@@ -460,7 +434,8 @@ function WizardApp({
   const [bundle, setBundle] = useState<UserChoices['bundle']>('everything');
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
   const [includeHomepage, setIncludeHomepage] = useState(true);
-  const [initGit, setInitGit] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_initGit, setInitGit] = useState(true);
 
   // Handle escape to quit
   useInput((_, key) => {
@@ -547,7 +522,7 @@ function WizardApp({
   if (panel === 'help') {
     return (
       <Box flexDirection="column">
-        <Header showSpecs={false} />
+        <Header />
         <HelpPanel onClose={() => setPanel(null)} />
       </Box>
     );
@@ -556,7 +531,7 @@ function WizardApp({
   if (panel === 'skills') {
     return (
       <Box flexDirection="column">
-        <Header showSpecs={false} />
+        <Header />
         <SkillsPanel onClose={() => setPanel(null)} />
       </Box>
     );
@@ -582,7 +557,6 @@ function WizardApp({
   return (
     <Box flexDirection="column">
       <Header
-        showSpecs={isFirstScreen}
         step={isFirstScreen ? undefined : currentStep}
         totalSteps={isFirstScreen ? undefined : totalSteps}
       />
@@ -692,7 +666,6 @@ export function runInkPrompts(defaultName?: string): Promise<UserChoices | null>
 // Init mode prompts (simpler)
 function InitApp({ onComplete }: { onComplete: (choices: InitChoices) => void }) {
   const { exit } = useApp();
-  const [bundle, setBundle] = useState<string>('everything');
 
   useInput((_, key) => {
     if (key.escape) {
@@ -721,7 +694,7 @@ function InitApp({ onComplete }: { onComplete: (choices: InitChoices) => void })
 
   return (
     <Box flexDirection="column">
-      <Header showSpecs={true} />
+      <Header />
       <Frame title="INIT MODE" hint="Adding to existing project">
         <Text>Which skills do you want?</Text>
         <Box marginTop={1}>

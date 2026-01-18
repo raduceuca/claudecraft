@@ -13,10 +13,13 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "bun run test && tsc",
     "dev": "tsc --watch",
     "start": "node bin/cli.js",
-    "prepublishOnly": "npm run build"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "bun run build"
   },
   "keywords": [
     "claude",
@@ -75,7 +78,9 @@
     "@types/fs-extra": "^11.0.4",
     "@types/gradient-string": "^1.1.6",
     "@types/node": "^20.11.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^2.1.4",
+    "@vitest/coverage-v8": "^2.1.4"
   },
   "dependencies": {
     "@clack/prompts": "^0.7.0",

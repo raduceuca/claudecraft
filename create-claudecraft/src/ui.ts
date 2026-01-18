@@ -1,7 +1,7 @@
 import figlet from 'figlet';
 import gradient from 'gradient-string';
 import pc from 'picocolors';
-import { TAGLINE, STACK, ASSETS, DEFAULT_THEME, DEFAULT_PORT, VERSION } from './constants.js';
+import { DEFAULT_PORT, VERSION } from './constants.js';
 
 // Split gradients for two-line logo
 const claudeGradient = gradient(['#00ff9f', '#00b8ff']); // Green → Cyan (fresh)
@@ -28,6 +28,7 @@ const INNER = 66;             // Normal content width
 
 // Pad content to exact width (strips ANSI codes for length calc)
 const padTo = (line: string, width: number): string => {
+  // eslint-disable-next-line no-control-regex
   const visible = line.replace(/\x1b\[[0-9;]*m/g, '').length;
   return line + ' '.repeat(Math.max(0, width - visible));
 };
@@ -98,44 +99,7 @@ export function renderHeader(): string {
   return '\n' + lines.join('\n') + '\n';
 }
 
-export function renderManifest(): string {
-  // Frame = 76 chars exactly
-  // Structure: "  │ " (4) + content (70) + " │" (2) = 76
-  // 3-col data: col1 (22) + " │ " (3) + col2 (20) + " │ " (3) + col3 (22) = 70 ✓
-
-  const p = (s: string, len: number) => s.padEnd(len);
-  const D = pc.dim;
-
-  // Column builders: label + value, totaling exact width
-  const col1 = (label: string, value: string) =>
-    `${D(p(label, 11))}${pc.cyan(p(value, 11))}`;  // 22 chars
-  const col2 = (label: string, value: string) =>
-    `${D(p(label, 10))}${pc.cyan(p(value, 10))}`;  // 20 chars
-  const col3 = (label: string, value: string) =>
-    `${D(p(label, 10))}${pc.cyan(p(value, 12))}`;  // 22 chars
-
-  // Header dividers: ─ sections must match column widths + frame chars
-  // col1 section: "─── STACK " (10) + 14 dashes = 24 (for 22 + " │" = 25... wait)
-  // Actually: between ├ and first ┬ = col1(22) + " " (1) = 23, plus ─'s for label
-  // Let me just hardcode the exact strings that work
-
-  const lines = [
-    `  ${D('╭' + '─'.repeat(72) + '╮')}`,
-    `  ${D('│')} ${D('SPECS ·')} ${p(TAGLINE, 63)}${D('│')}`,
-    `  ${D('├─── STACK ────────────────┬─── ASSETS ────────────┬─── DEFAULTS ────────┤')}`,
-    `  ${D('│')} ${col1('react', STACK.react)} ${D('│')} ${col2('skills', String(ASSETS.skills))} ${D('│')} ${col3('theme', DEFAULT_THEME)} ${D('│')}`,
-    `  ${D('│')} ${col1('typescript', STACK.typescript)} ${D('│')} ${col2('commands', String(ASSETS.commands))} ${D('│')} ${col3('port', String(DEFAULT_PORT))} ${D('│')}`,
-    `  ${D('│')} ${col1('vite', STACK.vite)} ${D('│')} ${col2('themes', String(ASSETS.themes))} ${D('│')} ${col3('tests', 'vitest')} ${D('│')}`,
-    `  ${D('│')} ${col1('tailwind', STACK.tailwind)} ${D('│')} ${col2('hooks', String(ASSETS.hooks))} ${D('│')} ${col3('pkg', 'bun')} ${D('│')}`,
-    `  ${D('│')} ${col1('daisyui', STACK.daisyui)} ${D('│')} ${col2('comps', String(ASSETS.components))} ${D('│')} ${col3('license', 'MIT')} ${D('│')}`,
-    `  ${D('├──────────────────────────┴────────────────────────┴────────────────────┤')}`,
-    `  ${D('│')} ${D('~48 files · 0 deps ·')} ${pc.cyan('/help')} ${D('for existential guidance')}                    ${D('│')}`,
-    `  ${D('╰' + '─'.repeat(72) + '╯')}`,
-  ];
-
-  return '\n' + lines.join('\n');
-}
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function renderMiniHeader(_step?: number, _total?: number): string {
   // Condensed ASCII logo with measurement tick - split gradient
   const logoGradient = gradient(['#00ff9f', '#00b8ff', '#a855f7', '#6d28d9']);
@@ -150,6 +114,7 @@ export function renderStepHeader(
   step: number,
   total: number,
   _title: string,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _required = false
 ): string {
   return renderMiniHeader(step, total);
@@ -219,6 +184,7 @@ ${lines.join('\n')}
   ${pc.dim('├─────────────────────────────────────────────────────────────────────┤')}`;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function renderProgressFooter(elapsed: string, _eta: string): string {
   return `  ${pc.dim('│')} elapsed: ${elapsed}
   ${pc.dim('╰─────────────────────────────────────────────────────────────────────╯')}

@@ -21,7 +21,8 @@ bun install          # Install dependencies
 bun dev              # Start dev server (port 6969)
 bun run build        # TypeScript check + Vite build
 bun run lint         # Run ESLint
-bun test             # Run tests
+bun run test         # Run tests (vitest)
+bun run test:watch   # Run tests in watch mode
 bun run preview      # Preview production build
 
 # Package management
@@ -320,6 +321,54 @@ Edit `tailwind.config.js` and add to the `daisyui.themes` array:
 
 ❌ **Don't** skip TypeScript types
 ✅ **Do** type all props and return values
+
+---
+
+## Available Components
+
+Use these existing components instead of creating new ones. Located in `src/components/ui/`.
+
+| Component | Purpose | Key Props |
+|-----------|---------|-----------|
+| `Button` | DaisyUI button wrapper | `variant`: primary, secondary, accent, ghost, link, info, success, warning, error<br>`size`: xs, sm, md, lg<br>`outline`: boolean<br>`loading`: boolean |
+| `CodeBlock` | Syntax-highlighted code display with copy | `children`: string (code)<br>`language`: string |
+| `CopyCommand` | Inline command with copy button | `children`: string (command) |
+| `FilePreview` | Expandable file content preview | `filename`: string<br>`description`: string<br>`content`: string<br>`language`: string |
+| `ThemeSelector` | Theme dropdown (32 themes) | None - uses ThemeContext |
+| `UICarousel` | Auto-cycling component showcase | None - uses ThemeContext |
+| `TerminalHeader` | ASCII art terminal banner | None |
+| `SkipLink` | Accessibility skip-to-content link | None |
+
+### Usage Examples
+
+```tsx
+import { Button } from '@/components/ui/Button'
+import { CodeBlock } from '@/components/ui/CodeBlock'
+import { CopyCommand } from '@/components/ui/CopyCommand'
+import { FilePreview } from '@/components/ui/FilePreview'
+
+// Button variants
+<Button variant="primary">Primary</Button>
+<Button variant="ghost" size="sm">Small Ghost</Button>
+<Button variant="error" outline>Danger Outline</Button>
+<Button loading>Loading...</Button>
+
+// Code display
+<CodeBlock language="typescript">
+{`const greeting = "Hello, world!"`}
+</CodeBlock>
+
+// Copy command
+<CopyCommand>bun create claudecraft</CopyCommand>
+
+// File preview
+<FilePreview
+  filename="example.ts"
+  description="A simple example"
+  content="export const x = 1"
+  language="typescript"
+/>
+```
 
 ---
 

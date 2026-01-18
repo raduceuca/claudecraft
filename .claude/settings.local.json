@@ -55,7 +55,10 @@
       "Bash(lsof:*)",
       "Bash(vercel --prod)",
       "Bash(npm publish:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(bun test:coverage:*)",
+      "WebFetch(domain:buildermethods.com)",
+      "Bash(git rm:*)"
     ],
     "deny": []
   }

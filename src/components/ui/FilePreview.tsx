@@ -31,7 +31,7 @@ export function FilePreview({ filename, description, content, language = 'markdo
       >
         <div>
           <div className="font-mono text-sm font-medium">{filename}</div>
-          <div className="text-xs text-base-content/50 mt-1">{description}</div>
+          <div className="text-sm text-base-content/50 mt-1">{description}</div>
         </div>
         <svg
           className={`w-5 h-5 text-base-content/50 transition-transform ${isOpen ? 'rotate-180' : ''}`}
@@ -46,7 +46,7 @@ export function FilePreview({ filename, description, content, language = 'markdo
 
       {isOpen && (
         <div id={panelId} className="border-t border-base-300 bg-base-200 p-4 overflow-x-auto">
-          <pre className="text-xs font-mono text-base-content/80 whitespace-pre-wrap">
+          <pre className="text-sm font-mono text-base-content/80 whitespace-pre-wrap">
             <code className={`language-${language}`}>{content}</code>
           </pre>
         </div>

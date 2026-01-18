@@ -65,3 +65,49 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ═══════════════════════════════════════
+   Terminal Header - Scale to Fit Mobile
+   ═══════════════════════════════════════ */
+
+.terminal-content-wrapper {
+  overflow: hidden;
+}
+
+.terminal-content {
+  /* Content has natural width of ~560px */
+  min-width: 560px;
+  transform-origin: top left;
+}
+
+/* Scale down on mobile viewports */
+@media (max-width: 639px) {
+  .terminal-content-wrapper {
+    /* Wrapper height = content height * scale factor */
+    /* Content is ~180px tall (ASCII + status bar), scaled to 0.55 = ~100px */
+    height: 105px;
+  }
+
+  .terminal-content {
+    transform: scale(0.55);
+  }
+}
+
+/* Slightly larger scale for tablets */
+@media (min-width: 640px) and (max-width: 767px) {
+  .terminal-content-wrapper {
+    height: 140px;
+  }
+
+  .terminal-content {
+    transform: scale(0.75);
+  }
+}
+
+/* Full size on desktop */
+@media (min-width: 768px) {
+  .terminal-content {
+    min-width: auto;
+    transform: none;
+  }
+}

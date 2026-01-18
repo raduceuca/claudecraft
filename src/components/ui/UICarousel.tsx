@@ -29,7 +29,7 @@ const slides = [
             </div>
             <div className="flex-1">
               <h3 className="font-medium text-sm">Claude</h3>
-              <p className="text-xs text-base-content/50">Probably typing...</p>
+              <p className="text-sm text-base-content/50">Probably typing...</p>
             </div>
             <span className="badge badge-success badge-sm gap-1">
               <span className="w-1.5 h-1.5 bg-current rounded-full animate-pulse" aria-hidden="true"></span>
@@ -60,7 +60,7 @@ const slides = [
     content: (
       <div className="bg-base-100 rounded-lg shadow-xl p-4">
         <h3 className="font-bold text-sm mb-2">Delete everything?</h3>
-        <p className="text-xs text-base-content/70 mb-4">This will remove all your work. Forever. No take-backs.</p>
+        <p className="text-sm text-base-content/70 mb-4">This will remove all your work. Forever. No take-backs.</p>
         <div className="flex gap-2 justify-end">
           <button className="btn btn-ghost btn-sm">Keep it</button>
           <button className="btn btn-error btn-sm">Burn it down</button>
@@ -73,11 +73,11 @@ const slides = [
     content: (
       <div className="stats stats-vertical bg-base-200 shadow w-full">
         <div className="stat py-3 px-4">
-          <div className="stat-title text-xs">Meetings survived</div>
+          <div className="stat-title text-sm">Meetings survived</div>
           <div className="stat-value text-2xl text-primary">47</div>
         </div>
         <div className="stat py-3 px-4">
-          <div className="stat-title text-xs">Coffee consumed</div>
+          <div className="stat-title text-sm">Coffee consumed</div>
           <div className="stat-value text-2xl text-secondary">∞</div>
         </div>
       </div>
@@ -88,21 +88,21 @@ const slides = [
     content: (
       <div className="space-y-4">
         <div>
-          <div className="flex justify-between text-xs mb-1">
+          <div className="flex justify-between text-sm mb-1">
             <span className="text-base-content/70">Scope creep</span>
             <span className="text-base-content/50">89%</span>
           </div>
           <progress className="progress progress-error w-full" value="89" max="100"></progress>
         </div>
         <div>
-          <div className="flex justify-between text-xs mb-1">
+          <div className="flex justify-between text-sm mb-1">
             <span className="text-base-content/70">Sanity remaining</span>
             <span className="text-base-content/50">12%</span>
           </div>
           <progress className="progress progress-success w-full" value="12" max="100"></progress>
         </div>
         <div>
-          <div className="flex justify-between text-xs mb-1">
+          <div className="flex justify-between text-sm mb-1">
             <span className="text-base-content/70">Budget</span>
             <span className="text-base-content/50">3%</span>
           </div>
@@ -116,13 +116,13 @@ const slides = [
     content: (
       <div>
         <div role="tablist" className="tabs tabs-boxed bg-base-200 mb-3" aria-label="Project phases">
-          <button role="tab" className="tab tab-active text-xs" aria-selected="true" id="tab-design" aria-controls="tabpanel-design">Design</button>
-          <button role="tab" className="tab text-xs" aria-selected="false" id="tab-code" aria-controls="tabpanel-code">Code</button>
-          <button role="tab" className="tab text-xs" aria-selected="false" id="tab-regret" aria-controls="tabpanel-regret">Regret</button>
+          <button role="tab" className="tab tab-active text-sm" aria-selected="true" id="tab-design" aria-controls="tabpanel-design">Design</button>
+          <button role="tab" className="tab text-sm" aria-selected="false" id="tab-code" aria-controls="tabpanel-code">Code</button>
+          <button role="tab" className="tab text-sm" aria-selected="false" id="tab-regret" aria-controls="tabpanel-regret">Regret</button>
         </div>
         <div role="tabpanel" id="tabpanel-design" aria-labelledby="tab-design" className="bg-base-200 rounded-lg p-3">
           <p className="text-sm text-base-content/70">Current tab: Design</p>
-          <p className="text-xs text-base-content/50 mt-1">Where ideas go to become tickets.</p>
+          <p className="text-sm text-base-content/50 mt-1">Where ideas go to become tickets.</p>
         </div>
       </div>
     ),
@@ -144,7 +144,7 @@ const slides = [
         </div>
         <label className="flex items-center gap-2 cursor-pointer">
           <input type="checkbox" className="checkbox checkbox-xs checkbox-primary" defaultChecked readOnly />
-          <span className="text-xs text-base-content/70">I accept that pixels are my life now</span>
+          <span className="text-sm text-base-content/70">I accept that pixels are my life now</span>
         </label>
       </div>
     ),
@@ -154,7 +154,7 @@ const slides = [
     content: (
       <ul className="timeline timeline-vertical timeline-compact">
         <li>
-          <div className="timeline-start text-xs text-base-content/50">Mon</div>
+          <div className="timeline-start text-sm text-base-content/50">Mon</div>
           <div className="timeline-middle">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-success"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
           </div>
@@ -163,7 +163,7 @@ const slides = [
         </li>
         <li>
           <hr className="bg-success"/>
-          <div className="timeline-start text-xs text-base-content/50">Tue</div>
+          <div className="timeline-start text-sm text-base-content/50">Tue</div>
           <div className="timeline-middle">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-success"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
           </div>
@@ -172,7 +172,7 @@ const slides = [
         </li>
         <li>
           <hr/>
-          <div className="timeline-start text-xs text-base-content/50">Fri</div>
+          <div className="timeline-start text-sm text-base-content/50">Fri</div>
           <div className="timeline-middle">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-base-content/30"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
           </div>
@@ -193,7 +193,7 @@ const slides = [
           <input type="radio" name="rating" className="mask mask-star-2 bg-base-300" aria-label="4 stars" />
           <input type="radio" name="rating" className="mask mask-star-2 bg-base-300" aria-label="5 stars" />
         </div>
-        <p className="text-xs text-base-content/50">Could be worse. Could be better.</p>
+        <p className="text-sm text-base-content/50">Could be worse. Could be better.</p>
       </div>
     ),
   },
@@ -281,7 +281,7 @@ export function UICarousel() {
       {/* Navigation */}
       <div className="flex items-center justify-between mt-4">
         {/* Counter */}
-        <span className="text-xs text-base-content/40 tabular-nums">
+        <span className="text-sm text-base-content/40 tabular-nums">
           {current + 1} / {slides.length}
         </span>
 
@@ -314,7 +314,7 @@ export function UICarousel() {
         </div>
 
         {/* Pause indicator */}
-        <span className="text-xs text-base-content/40 w-12 text-right">
+        <span className="text-sm text-base-content/40 w-12 text-right">
           {isHovered ? 'paused' : ''}
         </span>
       </div>

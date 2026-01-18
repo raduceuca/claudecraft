@@ -17,7 +17,7 @@ export function CodeBlock({ children, language }: CodeBlockProps) {
 
   return (
     <div className="relative group">
-      <pre className="font-mono text-xs bg-base-200/80 border border-base-300 p-3 rounded-lg overflow-x-auto">
+      <pre className="font-mono text-sm bg-base-200/80 border border-base-300 p-3 rounded-lg overflow-x-auto">
         {language && (
           <span className="absolute top-2 left-3 text-[10px] text-base-content/40 uppercase">
             {language}
