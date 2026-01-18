@@ -1,0 +1,74 @@
+{
+  "name": "create-claudecraft",
+  "version": "1.0.0",
+  "description": "Designer-first boilerplate for Claude Code. 27 skills, 7 commands, 32 themes. The robots are here.",
+  "type": "module",
+  "bin": {
+    "create-claudecraft": "./bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "templates",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node bin/cli.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai",
+    "boilerplate",
+    "react",
+    "typescript",
+    "tailwind",
+    "daisyui",
+    "create",
+    "cli",
+    "designer",
+    "vite",
+    "bun",
+    "anthropic",
+    "skills",
+    "agents"
+  ],
+  "author": {
+    "name": "Radu Ceuca",
+    "url": "https://x.com/raduceuca"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raduceuca/claudecraft.git",
+    "directory": "create-claudecraft"
+  },
+  "bugs": {
+    "url": "https://github.com/raduceuca/claudecraft/issues"
+  },
+  "homepage": "https://claudecraft.dev",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.5.8",
+    "@types/fs-extra": "^11.0.4",
+    "@types/gradient-string": "^1.1.6",
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "figlet": "^1.7.0",
+    "fs-extra": "^11.2.0",
+    "gradient-string": "^2.0.2",
+    "ink": "^6.6.0",
+    "ink-select-input": "^6.2.0",
+    "ink-text-input": "^6.0.0",
+    "picocolors": "^1.0.0",
+    "react": "^19.2.3"
+  }
+}
