@@ -53,7 +53,9 @@
       "Bash(npm pack:*)",
       "Bash(npx:*)",
       "Bash(lsof:*)",
-      "Bash(vercel --prod)"
+      "Bash(vercel --prod)",
+      "Bash(npm publish:*)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }

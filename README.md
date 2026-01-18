@@ -188,6 +188,46 @@ Modify `.claude/settings.local.json` to add:
 | Lucide | Icons |
 | Vitest | Testing |
 
+---
+
+## Credits
+
+This project stands on the shoulders of giants.
+
+### Core Stack
+
+| Project | Creator(s) | Link |
+|---------|-----------|------|
+| React | Meta | [react.dev](https://react.dev) |
+| TypeScript | Microsoft | [typescriptlang.org](https://www.typescriptlang.org) |
+| Vite | Evan You | [vitejs.dev](https://vitejs.dev) |
+| Tailwind CSS | Adam Wathan / Tailwind Labs | [tailwindcss.com](https://tailwindcss.com) |
+| DaisyUI | Pouya Saadeghi | [daisyui.com](https://daisyui.com) |
+| Bun | Jarred Sumner / Oven | [bun.sh](https://bun.sh) |
+| Vitest | Anthony Fu / Vue team | [vitest.dev](https://vitest.dev) |
+| React Router | Remix team | [reactrouter.com](https://reactrouter.com) |
+| Lucide | Lucide team | [lucide.dev](https://lucide.dev) |
+
+### Skills & Workflows
+
+| Skill Collection | Creator | Link |
+|-----------------|---------|------|
+| Superpowers (13 skills) | Jesse Vincent (obra) | [github.com/obra/superpowers](https://github.com/obra/superpowers) |
+| React Best Practices | Vercel | [vercel.com/design](https://vercel.com/design) |
+| Testing Patterns | Chris Wiles | [github.com/ChrisWiles](https://github.com/ChrisWiles/claude-code-showcase) |
+| UI Skills | ui-skills.com | [ui-skills.com](https://www.ui-skills.com) |
+| A11y Audit | daffy0208 | [claude-plugins.dev](https://claude-plugins.dev/skills/@daffy0208/ai-dev-standards/accessibility-engineer) |
+
+### Utilities
+
+| Package | Creator |
+|---------|---------|
+| clsx | Luke Edwards |
+| tailwind-merge | dcastil |
+| picocolors | Alexey Raspopov |
+
+---
+
 ## License
 
 MIT

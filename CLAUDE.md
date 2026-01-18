@@ -330,3 +330,33 @@ Edit `tailwind.config.js` and add to the `daisyui.themes` array:
 - Theme persists in localStorage
 - Path alias `@/` maps to `src/`
 - All DaisyUI themes are pre-installed
+
+---
+
+## Credits
+
+This project stands on the shoulders of giants.
+
+### Stack Credits
+
+| Project | Creator(s) |
+|---------|-----------|
+| [React](https://react.dev) | Meta |
+| [TypeScript](https://typescriptlang.org) | Microsoft |
+| [Vite](https://vitejs.dev) | Evan You |
+| [Tailwind CSS](https://tailwindcss.com) | Adam Wathan / Tailwind Labs |
+| [DaisyUI](https://daisyui.com) | Pouya Saadeghi |
+| [Bun](https://bun.sh) | Jarred Sumner / Oven |
+| [Vitest](https://vitest.dev) | Anthony Fu / Vue team |
+| [React Router](https://reactrouter.com) | Remix team |
+| [Lucide](https://lucide.dev) | Lucide team |
+
+### Skills Credits
+
+| Collection | Creator |
+|------------|---------|
+| [Superpowers](https://github.com/obra/superpowers) | Jesse Vincent (obra) |
+| React Best Practices | [Vercel](https://vercel.com/design) |
+| Testing Patterns | [Chris Wiles](https://github.com/ChrisWiles) |
+| UI Skills | [ui-skills.com](https://www.ui-skills.com) |
+| A11y Audit | [daffy0208](https://claude-plugins.dev) |

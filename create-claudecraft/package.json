@@ -40,6 +40,23 @@
     "name": "Radu Ceuca",
     "url": "https://x.com/raduceuca"
   },
+  "contributors": [
+    {
+      "name": "Jesse Vincent (obra)",
+      "url": "https://github.com/obra/superpowers",
+      "contribution": "Superpowers skills collection"
+    },
+    {
+      "name": "Vercel",
+      "url": "https://vercel.com/design",
+      "contribution": "React best practices"
+    },
+    {
+      "name": "Chris Wiles",
+      "url": "https://github.com/ChrisWiles",
+      "contribution": "Testing patterns"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",

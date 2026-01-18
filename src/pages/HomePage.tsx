@@ -562,6 +562,47 @@ CLAUDE.md               # project context`}</CodeBlock>
         </section>
 
 
+        {/* Credits */}
+        <section className="mb-20 max-w-xl">
+          <h2 className="text-lg font-semibold mb-6 text-balance text-base-content">Credits</h2>
+          <p className="text-base-content/70 mb-6 text-pretty">
+            This project stands on the shoulders of giants.
+          </p>
+
+          <div className="space-y-4 text-sm">
+            <div>
+              <h3 className="text-base-content/60 font-medium mb-2">Core Stack</h3>
+              <div className="flex flex-wrap gap-x-4 gap-y-1 text-base-content/50">
+                <a href="https://react.dev" target="_blank" rel="noopener noreferrer" className="hover:text-primary">React (Meta)</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://typescriptlang.org" target="_blank" rel="noopener noreferrer" className="hover:text-primary">TypeScript (Microsoft)</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Vite (Evan You)</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Tailwind (Adam Wathan)</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://daisyui.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary">DaisyUI (Pouya Saadeghi)</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://bun.sh" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Bun (Jarred Sumner)</a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-base-content/60 font-medium mb-2">Skills & Workflows</h3>
+              <div className="flex flex-wrap gap-x-4 gap-y-1 text-base-content/50">
+                <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Superpowers (Jesse Vincent)</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://vercel.com/design" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Vercel Design</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://github.com/ChrisWiles" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Chris Wiles</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://www.ui-skills.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary">UI Skills</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
         {/* Footer */}
         <footer className="pt-10 border-t border-base-200 text-sm text-base-content/50">
           <div className="flex items-center justify-between">
